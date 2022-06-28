@@ -50,9 +50,16 @@ function App() {
         // unique key prop needed.
         <div key={todo.id}>
           {/* surround todo text inside of its own div to keep organized.  */}
-          <div>{todo.text}</div>
-          {/* add delete button to delete todo, pass deleteTodo function in arrow function inside of onclick for button  */}
-          <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+          <div className="todo-item">
+            {todo.text}
+            {/* add delete button to delete todo, pass deleteTodo function in arrow function inside of onclick for button  */}
+            <button
+              className="todo-item-delete"
+              onClick={() => deleteTodo(todo.id)}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       ))}
     </div>
