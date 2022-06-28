@@ -25,6 +25,14 @@ function App() {
     setTodo("");
   }
 
+  // delete todo function. pass todo id as param
+  function deleteTodo(id) {
+    // shorten array of todos
+    // filter will take an arrow funciton and act like a map
+    const updatedTodos = [...todos].filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  }
+
   return (
     <div className="App">
       {/* onsubmit handler, pass in a func called handleSubmit */}
