@@ -39,7 +39,8 @@ function App() {
       </form>
       {/* map over todos, arrow function, name every element todo, pass that as the param */}
       {todos.map((todo) => (
-        <div>{todo.text}</div>
+        // unique key prop needed.
+        <div key={todo.id}>{todo.text}</div>
       ))}
     </div>
   );
