@@ -35,12 +35,17 @@ function App() {
           onChange={(e) => setTodo(e.target.value)}
           value={todo}
         />
-        <button type="submit">submit</button>
+        <button type="submit">Add Todo</button>
       </form>
       {/* map over todos, arrow function, name every element todo, pass that as the param */}
       {todos.map((todo) => (
         // unique key prop needed.
-        <div key={todo.id}>{todo.text}</div>
+        <div key={todo.id}>
+          {/* surround todo text inside of its own div to keep organized.  */}
+          <div>{todo.text}</div>
+          {/* add delete button to delete todo, pass deleteTodo function in arrow function inside of onclick for button  */}
+          <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+        </div>
       ))}
     </div>
   );
