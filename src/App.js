@@ -33,6 +33,18 @@ function App() {
     setTodos(updatedTodos);
   }
 
+  // function for checkbox, pass todo id as param
+  function toggleComplete(id) {
+    const updatedTodos = [...todos].map((todo) => {
+      if (todo.id == id) {
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    });
+
+    setTodos(updatedTodos);
+  }
+
   return (
     <div className="App">
       {/* onsubmit handler, pass in a func called handleSubmit */}
@@ -59,6 +71,12 @@ function App() {
             >
               Delete
             </button>
+            {/* add a checkbox w a function */}
+            <input
+              type="checkbox"
+              onChange={() => toggleComplete(todo.id)}
+              checked={todo.completed}
+            ></input>
           </div>
         </div>
       ))}
