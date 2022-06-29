@@ -68,6 +68,11 @@ function App() {
           {/* surround todo text inside of its own div to keep organized.  */}
           <div className="todo-item">
             {todo.text}
+            {/* create another input, takes in onchange method to use event variable in function to set editing text pass e target value as param. */}
+            <input
+              onChange={(e) => setEditingText(e.target.value)}
+              value={editingText}
+            />
             {/* add delete button to delete todo, pass deleteTodo function in arrow function inside of onclick for button  */}
             <button
               className="todo-item-delete"
@@ -81,6 +86,8 @@ function App() {
               onChange={() => toggleComplete(todo.id)}
               checked={todo.completed}
             />
+            {/* make a button to edit todos, add onclick and pass in function for set todo editing pass in todo id.  */}
+            <button onClick={() => setTodoEditing(todo.id)}>Edit Todo</button>
           </div>
         </div>
       ))}
