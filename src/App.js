@@ -6,6 +6,10 @@ function App() {
   const [todos, setTodos] = useState([]);
   // use state for a todo
   const [todo, setTodo] = useState("");
+  // use state for editing. null by default, going to be id of todo I are editing
+  const [todoEditing, setTodoEditing] = useState(null);
+  // keep track of text of todo we are editing
+  const [editingText, setEditingText] = useState("");
 
   // create handleSubmit function
   function handleSubmit(e) {
