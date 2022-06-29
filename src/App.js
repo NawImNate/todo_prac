@@ -49,6 +49,19 @@ function App() {
     setTodos(updatedTodos);
   }
 
+  // function for editing a todo passing id as a param
+  function editTodo(id) {
+    const updatedTodos = [...todos].map((todo) => {
+      if (todo.id === id) {
+        todo.text = editingText;
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+    setTodoEditing(null);
+    setEditingText("");
+  }
+
   return (
     <div className="App">
       {/* onsubmit handler, pass in a func called handleSubmit */}
@@ -67,12 +80,17 @@ function App() {
         <div key={todo.id}>
           {/* surround todo text inside of its own div to keep organized.  */}
           <div className="todo-item">
-            {todo.text}
-            {/* create another input, takes in onchange method to use event variable in function to set editing text pass e target value as param. */}
-            <input
-              onChange={(e) => setEditingText(e.target.value)}
-              value={editingText}
-            />
+            {/* cond rendering  if the editing is equal to the todoid then, if not then...*/}
+            {/* take created input from earier for editing text of todo for first part of if (takes in onchange method to use event variable in function to set editing text pass e target value as param) otherwise show the todo text.*/}
+            {todoEditing === todo.id ? (
+              <input
+                onChange={(e) => setEditingText(e.target.value)}
+                value={editingText}
+              />
+            ) : (
+              todo.text
+            )}
+
             {/* add delete button to delete todo, pass deleteTodo function in arrow function inside of onclick for button  */}
             <button
               className="todo-item-delete"
@@ -88,6 +106,8 @@ function App() {
             />
             {/* make a button to edit todos, add onclick and pass in function for set todo editing pass in todo id.  */}
             <button onClick={() => setTodoEditing(todo.id)}>Edit Todo</button>
+            {/* submit edited todo button, pass todo id as param*/}
+            <button onClick={() => editTodo(todo.id)}>Submit Edit</button>
           </div>
         </div>
       ))}
