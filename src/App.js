@@ -36,7 +36,7 @@ function App() {
   // function for checkbox, pass todo id as param
   function toggleComplete(id) {
     const updatedTodos = [...todos].map((todo) => {
-      if (todo.id == id) {
+      if (todo.id === id) {
         todo.completed = !todo.completed;
       }
       return todo;
@@ -76,7 +76,7 @@ function App() {
               type="checkbox"
               onChange={() => toggleComplete(todo.id)}
               checked={todo.completed}
-            ></input>
+            />
           </div>
         </div>
       ))}
